@@ -134,8 +134,8 @@ def g14_cmd():
     elif request.method == 'GET':
         return render_template('g14CMD.html', form = form)
 
-@app.route('/g15_cmd', methods = ['GET', 'POST'])
-def g15_cmd():
+@app.route('/g19_cmd', methods = ['GET', 'POST'])
+def g19_cmd():
     global ts1
     form = SubmitForm()
     st= datetime.datetime.now().strftime("%Y-%m-%d--%H-%M") # exmp: 2018-07-01--16-57
@@ -152,14 +152,14 @@ def g15_cmd():
     
     if request.method == 'POST':
         call(["fswebcam", "-d", "/dev/video0", "-r", "1280x720","--top-banner", ts11])
-        return render_template('g15success.html',ts1=ts1,filelist=filelist)
+        return render_template('g19success.html',ts1=ts1,filelist=filelist)
 
         
     elif request.method == 'GET':
-        return render_template('g15CMD.html', form = form)
+        return render_template('g19CMD.html', form = form)
 
-@app.route('/g15history')
-def g15_history():
+@app.route('/g19history')
+def g19_history():
     filelist = []
     for root, dirs, files in os.walk("./static/images", topdown=False):
         for name in sorted(files,reverse=True):
@@ -167,8 +167,8 @@ def g15_history():
     ts1 = "images/"+filelist[0]
     return render_template('g15success.html',ts1=ts1,filelist=filelist)
 
-@app.route('/g15history/<image>')
-def g15_history_img(image):
+@app.route('/g19history/<image>')
+def g19_history_img(image):
     filelist = []
     for root, dirs, files in os.walk("./static/images", topdown=False):
         for name in sorted(files,reverse=True):
