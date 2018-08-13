@@ -43,10 +43,17 @@ def g11_cmd():
     form = SubmitForm()
    
     if request.method == 'POST':
-        form_output = cmd_Get_Date_Time()
-        return render_template('g11success.html', output = form_output)
-
-        
+        url = 'https://fp550irvas.localtunnel.me/g11_cmd'
+        response = requests.get(url)
+        resp_dict = json.loads(response.text)
+        if type(resp_dict) is str:
+            data_str = resp_dict
+        else:
+            data_str =  ""
+            for m in resp_dict['recv_pck_Data']:
+                data_str = data_str + chr(m)
+        print data_str
+        return render_template('g11success.html', output = data_str)
     elif request.method == 'GET':
         return render_template('g11CMD.html', form = form)
 
@@ -56,9 +63,17 @@ def g12_cmd():
     form = SubmitForm()
    
     if request.method == 'POST':
-        form_output = cmd_Get_PIB()
-        return render_template('g12success.html', output = form_output)
-
+        url = 'https://f550irvas.localtunnel.me/g12_cmd'
+        response = requests.get(url)
+        resp_dict = json.loads(response.text)
+        if type(resp_dict) is str:
+            data_str = resp_dict
+        else:
+            data_str = ""
+            for m in resp_dict['recv_pck_Data']:
+                data_str = data_str + chr(m)
+        print data_str
+        return render_template('g12success.html', output = data_str)
         
     elif request.method == 'GET':
         return render_template('g12CMD.html', form = form)
@@ -69,9 +84,17 @@ def g13_cmd():
     form = PaperMoveForm()
    
     if request.method == 'POST':
-        form_output = cmd_Paper_Move(form.lines.data)
-        return render_template('g13success.html', output = form_output)
-
+        url = 'https://fp550irvas.localtunnel.me/g13_cmd'
+        response = requests.get(url)
+        resp_dict = json.loads(response.text)
+        if type(resp_dict) is str:
+            data_str = resp_dict
+        else:
+            data_str = ""
+            for m in resp_dict['recv_pck_Data']:
+                data_str = data_str + chr(m)
+        print data_str
+        return render_template('g13success.html', output = data_str)
         
     elif request.method == 'GET':
         return render_template('g13CMD.html', form = form)
