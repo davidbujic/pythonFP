@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+   
+      <h2> <font color= green>Current printer diagnostics is:</font></h2>
+	<ul>
+            {% for line in output %}
+            <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+      
+{%endblock%}

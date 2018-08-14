@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	{% include "_leftMenuG1.html" %}
+
+	<div class="content">
+<!--		<h1>Ovde ide submit button za G2.1 GetDate_Time</h1>
+		<p>status  , data, full msg</p> -->
+
+		<form action = "" method = post>
+         		<fieldset>
+            		<legend>All printer articles</legend>
+            		{{ form.hidden_tag() }}
+            
+            		<div style = font-size:20px; font-weight:bold; margin-left:150px;>
+<p> click button to run command</p>
+<br>
+               			{{ form.submit }}
+            		</div>
+            
+         		</fieldset>
+      		</form>
+	</div>
+</div>
+	
+{% endblock %}

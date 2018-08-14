@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+   
+      <h2> <font color= green>All printer articles are:</font></h2?
+	<ul>
+            {% for line in output %}
+            <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+      
+{%endblock%}
