@@ -84,7 +84,7 @@ def g13_cmd():
     form = PaperMoveForm()
    
     if request.method == 'POST':
-        url = 'https://fp550irvas.localtunnel.me/g13_cmd'
+        url = 'https://fp550irvas.localtunnel.me/g13_cmd' + form.lines.data
         response = requests.get(url)
         resp_dict = json.loads(response.text)
         if type(resp_dict) is str:
