@@ -132,8 +132,65 @@ def g14_cmd():
 
         
     elif request.method == 'GET':
-        return render_template('g14CMD.html', form = form)
+        return render_template('g14CMD.html', form = form)   
 
+@app.route('/g16_cmd', methods['GET','POST'])
+def g16_cmd():
+    form = SubmitForm()
+    
+    if request.method == 'POST':
+        url = 'https://fp550irvas.localtunnel.me/g16_cmd'
+        response = requests.get(url)
+        resp_dict = json.loads(response.text)
+        if type(resp_dict) is str:
+            data_str = resp_dict
+        else:
+            data_str = ""
+            for m in resp_dict['recv_pck_Data']:
+                data_str = data_str + chr(m)
+        print data_str
+        return render_template('g16success.html', output = data_str)
+    elif request.method == 'GET':
+        return render_template('g16CMD.html', form = form)
+    
+@app.route('/g17_cmd', methods = ['GET','POST'])
+def g17_cmd():
+    form = SubmitForm()
+    
+    if request.method == 'POST':
+        url = 'https://f550irvas.localtunnel.me/g17_cmd'
+        response = requests.get(url)
+        resp_dict = json.loads(response.text)
+        if type(resp_dict) is str:
+            data_str = resp_dict
+        else:
+            data_str = ""
+            for m in resp_dict['rcv_pck_Data']:
+                data_str = data_str + chr(m)
+        print data_str
+        return render_template('g17success.html', output = data_str)
+    elif request.method == 'GET':
+        return render_template('g17CMD.html', form = form)
+
+@app.route('/g18_cmd', methods = ['GET','POST'])
+def g18_cmd():
+    form = SubmitForm()
+    
+    if request.method == 'POST':
+        url = 'https://f550irvas.localtunnel.me/g18_cmd'
+        response = requests.get(url)
+        resp_dict = json.loads(response.text)
+        if type(resp_dict) is str:
+            data_str = resp_dict
+        else:
+            data_str = ""
+            for m in resp_dict['recv_pck_Data']:
+                data_str = data_str + chr(m)
+        print data_str
+        return render_template('g18success.html', output = data_str)
+    elif request.method == 'GET':
+        return render_template('g18CMD.html', form = form)
+        
 @app.route('/g19_cmd', methods = ['GET', 'POST'])
 def g19_cmd():
     global ts1
